@@ -1,7 +1,7 @@
 # Проект «Большое путешествие»
 
-* Студент: [Aleksandr Zhikharev](https://up.htmlacademy.ru/ecmascript-individual/2/user/2554795).
-* Наставник: `Неизвестно`.
+- Студент: [Aleksandr Zhikharev](https://up.htmlacademy.ru/ecmascript-individual/2/user/2554795).
+- Наставник: `Роман Марченко`.
 
 ---
 
