@@ -95,14 +95,15 @@ function createEditPoint(point, destinations, offers) {
 
                     <div class="event__available-offers">
 
-${typeOffers.map(
-  (mainOffer) =>
-    `          <div class="event__offer-selector">
+${typeOffers
+  .map(
+    (mainOffer) =>
+      `          <div class="event__offer-selector">
                         <input class="event__offer-checkbox  visually-hidden" id="event-offer-${
                           mainOffer.title
                         }-1" type="checkbox" name="event-offer-${
-      mainOffer.title
-    }"
+        mainOffer.title
+      }"
         ${offersPoint.includes(mainOffer.id) ? "checked" : ""}
 
     >
@@ -118,7 +119,8 @@ ${typeOffers.map(
                           }</span>
                         </label>
                       </div>`
-)}
+  )
+  .join("")}
                     </div>
                   </section>
 
