@@ -2,8 +2,7 @@ import { FiltersView } from "./view/filters-view.js";
 import { SortView } from "./view/sort-view.js";
 import ListPresenter from "./presenter/list-presenter.js";
 import { ElementListView } from "./view/list-view.js";
-
-import { render } from "./render.js";
+import { render } from "./framework/render.js";
 
 const tripMain = document.querySelector(".trip-main");
 render(new FiltersView(), tripMain);

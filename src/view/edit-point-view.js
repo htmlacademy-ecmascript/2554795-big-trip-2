@@ -1,5 +1,5 @@
 import { POINT_TYPES } from "../const.js";
-import { createElement } from "../render.js";
+import AbstractView from "../framework/view/abstract-view.js";
 import { toEditFormDueDate } from "../utils.js";
 
 const firstLetterUp = (word) => {
@@ -134,24 +134,27 @@ ${typeOffers
               </form></li>`;
 }
 
-export class EditorPoint {
-  constructor(point, destinations, offers) {
+export class EditorPoint extends AbstractView {
+  #handleSaveClick = null;
+
+  constructor(point, destinations, offers, onSaveClick) {
+    super();
     this.point = point;
     this.destinations = destinations;
     this.offers = offers;
+    this.#handleSaveClick = onSaveClick;
+    this.hideButton = this.element.querySelector(".event__rollup-btn");
+    this.hideButton.addEventListener("click", this.#clickHandler);
+    this.saveButton = this.element.querySelector(".event__save-btn");
+    this.saveButton.addEventListener("click", this.#clickHandler);
   }
-  getTemplate() {
+
+  get template() {
     return createEditPoint(this.point, this.destinations, this.offers);
   }
 
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-    return this.element;
-  }
-
-  removeElement() {
-    this.element = null;
-  }
+  #clickHandler = (evt) => {
+    evt.preventDefault();
+    this.#handleSaveClick();
+  };
 }
