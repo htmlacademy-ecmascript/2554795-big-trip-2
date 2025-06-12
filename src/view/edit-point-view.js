@@ -134,27 +134,32 @@ ${typeOffers
               </form></li>`;
 }
 
-export class EditorPoint extends AbstractView {
-  #handleSaveClick = null;
+export class EditPointView extends AbstractView {
+  #handleClick = null;
 
-  constructor(point, destinations, offers, onSaveClick) {
+  constructor(point, destinations, offers, onButtonClick) {
     super();
     this.point = point;
     this.destinations = destinations;
     this.offers = offers;
-    this.#handleSaveClick = onSaveClick;
+    this.#handleClick = onButtonClick;
     this.hideButton = this.element.querySelector(".event__rollup-btn");
-    this.hideButton.addEventListener("click", this.#clickHandler);
+    this.hideButton.addEventListener("click", this.#clickCloseButtonHandler);
     this.saveButton = this.element.querySelector(".event__save-btn");
-    this.saveButton.addEventListener("click", this.#clickHandler);
+    this.saveButton.addEventListener("click", this.#clickSaveButtonHandler);
   }
 
   get template() {
     return createEditPoint(this.point, this.destinations, this.offers);
   }
 
-  #clickHandler = (evt) => {
+  #clickSaveButtonHandler = (evt) => {
     evt.preventDefault();
-    this.#handleSaveClick();
+    this.#handleClick();
+  };
+
+  #clickCloseButtonHandler = (evt) => {
+    evt.preventDefault();
+    this.#handleClick();
   };
 }

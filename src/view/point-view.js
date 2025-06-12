@@ -74,7 +74,7 @@ function createPoint(point, destinations, offers) {
             </li>`;
 }
 
-export class PointViewer extends AbstractView {
+export class PointView extends AbstractView {
   #handleEditClick = null;
 
   constructor(point, destinations, offers, onEditClick) {

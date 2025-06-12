@@ -1,6 +1,6 @@
 import { AddNewPoint } from "../view/add-new-point-view.js";
-import { EditorPoint } from "../view/edit-point-view.js";
-import { PointViewer } from "../view/point-view.js";
+import { EditPointView } from "../view/edit-point-view.js";
+import { PointView } from "../view/point-view.js";
 import { points } from "../mock/points.js";
 import { destinations } from "../mock/destinations.js";
 import { offers } from "../mock/offers.js";
@@ -56,7 +56,7 @@ export default class ListPresenter {
       replaceEditFormToCard();
     };
 
-    const currentPoint = new PointViewer(
+    const currentPoint = new PointView(
       point,
       destinations,
       offers,
@@ -64,7 +64,7 @@ export default class ListPresenter {
     );
     render(currentPoint, this.#listContainer);
 
-    const currentEditForm = new EditorPoint(
+    const currentEditForm = new EditPointView(
       point,
       destinations,
       offers,
