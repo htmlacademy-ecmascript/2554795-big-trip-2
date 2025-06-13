@@ -1,3 +1,4 @@
+import AbstractView from "../framework/view/abstract-view.js";
 import { createElement } from "../render.js";
 import {
   extractTimeDueDate,
@@ -73,24 +74,25 @@ function createPoint(point, destinations, offers) {
             </li>`;
 }
 
-export class PointViewer {
-  constructor(point, destinations, offers) {
+export class PointView extends AbstractView {
+  #handleEditClick = null;
+
+  constructor(point, destinations, offers, onEditClick) {
+    super();
     this.point = point;
     this.destinations = destinations;
     this.offers = offers;
+    this.#handleEditClick = onEditClick;
+    this.editButton = this.element.querySelector(".event__rollup-btn");
+    this.editButton.addEventListener("click", this.#clickHandler);
   }
-  getTemplate() {
+
+  get template() {
     return createPoint(this.point, this.destinations, this.offers);
   }
 
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-    return this.element;
-  }
-
-  removeElement() {
-    this.element = null;
-  }
+  #clickHandler = (evt) => {
+    evt.preventDefault();
+    this.#handleEditClick();
+  };
 }

@@ -1,4 +1,3 @@
-// import { getRandomPoint } from "../mock/point-old";
 import { points } from "../mock/points";
 import { offers } from "../mock/offers";
 import { destinations } from "../mock/destinations";
@@ -16,15 +15,15 @@ export default class PointModel {
     this.offers = offers;
   }
 
-  getPoints() {
+  get points() {
     return this.points;
   }
 
-  getDestinations() {
+  get destinations() {
     return this.destinations;
   }
 
-  getOffers() {
+  get offers() {
     return this.offers;
   }
 }
